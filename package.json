@@ -1,0 +1,25 @@
+{
+  "name": "basic-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass:build": "sass --no-source-map scss:public/css",
+    "sass:watch": "sass --no-source-map --watch scss:public/css",
+    "tailwind:build": "tailwindcss -i ./public/css/input/tailwind.css -o ./public/css/tailwindStyle.css",
+    "tailwind:watch": "tailwindcss -i ./public/css/input/tailwind.css -o ./public/css/tailwindStyle.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "ejs-mate": "^4.0.0",
+    "express": "^4.21.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.9.2",
+    "sass": "^1.83.0",
+    "scss": "^0.2.4",
+    "tailwindcss": "^3.4.17"
+  }
+}
