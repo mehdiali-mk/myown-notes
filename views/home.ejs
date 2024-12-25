@@ -1,0 +1,36 @@
+<% layout("/layout/boilerplate") %>
+<body class="">
+  <div class="w-full px-24 py-4 min-h-[81vh]">
+    <div class=""><%- include("includes/headingText") %></div>
+    <div class="w-full mb-4 mt-8">
+      <div class="text-3xl text-secondary font-bold">Notes</div>
+    </div>
+    <div
+      class="flex items-center justify-center w-full text-secondary flex-wrap gap-6"
+    >
+      <% for (let note of allNote) {%>
+      <div
+        class="flex items-start justify-start flex-col w-80 border-2 border-secondary px-2 py-2 rounded-lg h-48"
+      >
+        <div class="text-xl font-semibold"><%= note.title %></div>
+        <div class="w-full flex items-end justify-end">
+          <div class="text-xs">
+            <span class="font-bold">Date : </span><%=
+            note.date.toISOString().split('T')[0]; %>
+          </div>
+        </div>
+        <div class="text-justify mt-2 w-full text-sm line-clamp-4">
+          <%= note.description %>
+        </div>
+        <div class="w-full flex items-center justify-center">
+          <div
+            class="px-2 py-1 mt-2 bg-primary rounded-lg text-sm cursor-pointer"
+          >
+            View More
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</body>

@@ -5,8 +5,12 @@ const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+const Note = require("./model/noteModel");
+const findDateandTime = require("./functions");
 
-const MONGOOSE_URL = "mongodb://127.0.0.1:27017/example";
+const { homeContent, aboutContent, contactContent } = require("./paragraph");
+
+const MONGOOSE_URL = "mongodb://127.0.0.1:27017/noteDB";
 
 main()
   .then(() => {
@@ -27,8 +31,40 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname + "/public")));
 
-app.get("/", (request, response) => {
-  response.render("example.ejs");
+app.get("/", async (request, response) => {
+  const allNote = await Note.find({}).sort({ date: -1 });
+  console.log(allNote);
+  response.render("home.ejs", {
+    title: "Home",
+    paragraph: homeContent,
+    allNote,
+  });
+});
+
+app.get("/about", (request, response) => {
+  response.render("about.ejs", { title: "About", paragraph: aboutContent });
+});
+
+app.get("/contact", (request, response) => {
+  response.render("contact.ejs", {
+    title: "Contact",
+    paragraph: contactContent,
+  });
+});
+
+app.get("/create", (request, response) => {
+  response.render("create.ejs");
+});
+
+app.post("/create", async (request, response) => {
+  const note = request.body.note;
+  const currentDateWithTime = findDateandTime(note.date);
+  note.date = currentDateWithTime;
+
+  const newNote = new Note(note);
+  await newNote.save();
+
+  response.redirect("/");
 });
 
 app.listen(PORT, () => {

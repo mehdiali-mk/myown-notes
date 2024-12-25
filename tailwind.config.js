@@ -4,8 +4,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#E41B5F",
-        light: "#fffbfe",
+        primary: "#EE8434",
+        secondary: "#36454F",
+        light: "#FFFAFB",
+      },
+      fontFamily: {
+        poppins: ["Poppins"],
+        roboto: ["Roboto"],
       },
     },
   },
