@@ -67,6 +67,14 @@ app.post("/create", async (request, response) => {
   response.redirect("/");
 });
 
+app.get("/:id", async (request, response) => {
+  const { id } = request.params;
+
+  const note = await Note.findById(id);
+
+  response.render("noteView.ejs", { note });
+});
+
 app.listen(PORT, () => {
   console.log("listening on port " + PORT);
 });

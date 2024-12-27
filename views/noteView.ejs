@@ -1,0 +1,25 @@
+<% layout("/layout/boilerplate") %>
+<body>
+  <div class="w-full px-24 min-h-[80vh] text-secondary">
+    <div class="flex items-start justify-center flex-col gap-5">
+      <div class="flex items-end justify-between w-full">
+        <div class="text-4xl font-bold"><%= note.title %></div>
+        <div
+          class="text-xl italic "
+        >
+       
+            <span class="font-bold">Date: </span>
+            <%= note.date.toISOString().split('T')[0]; %></span
+            
+          >
+        </div>
+      </div>
+      <div class="text-lg text-justify">
+        <%= note.description %>
+      </div>
+    </div>
+
+    <div class="buttons">
+    </div>
+  </div>
+</body>

@@ -1,8 +1,8 @@
 <% layout("/layout/boilerplate") %>
 <body class="">
-  <div class="w-full px-24 py-4 min-h-[81vh]">
+  <div class="w-full px-24 min-h-[80vh]">
     <div class=""><%- include("includes/headingText") %></div>
-    <div class="w-full mb-4 mt-8">
+    <div class="w-full mb-4 mt-6">
       <div class="text-3xl text-secondary font-bold">Notes</div>
     </div>
     <div
@@ -23,11 +23,12 @@
           <%= note.description %>
         </div>
         <div class="w-full flex items-center justify-center">
-          <div
+          <a
+            href="/<%= note._id %>"
             class="px-2 py-1 mt-2 bg-primary rounded-lg text-sm cursor-pointer"
           >
             View More
-          </div>
+          </a>
         </div>
       </div>
       <% } %>
